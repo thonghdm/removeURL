@@ -21,7 +21,11 @@
     // Function to extract domain name from URL
     function extractDomain(url) {
       const match = url.match(/\/\/([^/]+)\//);
-      return match ? match[1] : url; // Return domain or original URL if no match
+      let domain = match ? match[1] : url; // Return domain or original URL if no match
+      if (domain.startsWith('www.')) {
+        domain = domain.substring(4); // Remove 'www.' prefix
+      }
+      return domain;
     }
 
     // Function to process CSV file
